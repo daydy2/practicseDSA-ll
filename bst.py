@@ -21,11 +21,39 @@ class BinarySearchTree:
                 if temp.left is None:
                     temp.left = new_node
                     return True
-                
+                temp = temp.left
+            else:
+                if temp.right is None:
+                    temp.right = new_node
+                    return True
+                temp = temp.right
 
+    def contains(self, value):
+        temp = self.root
+        while temp is not None:
+            if value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+            else:
+                return True
+        return False 
+
+    def min_value_node(self, current__node):
+        while current__node.left is not None:
+            current__node = current__node.left
+        return current__node
 
 
 
 my_tree = BinarySearchTree()
+my_tree. insert(47)
+my_tree. insert(21)
+my_tree. insert(76)
+my_tree. insert(18)
+my_tree. insert(27)
+my_tree. insert(52)
+my_tree. insert(82)
 
-print(my_tree.root)
+print(my_tree.min_value_node(my_tree.root))
+print(my_tree.min_value_node(my_tree.root.right))
